@@ -53,3 +53,13 @@ app.js       — tab navigation, animations, checklist persistence
 ---
 
 _Thailand 2025 · Inspired by Germany's Kreislaufwirtschaft_
+
+## Module map
+
+Already separated at a suitable scale:
+
+- `index.html`: waste-management guidance and page layout.
+- `app.js`: page interactions (a small script).
+- `style.css`: presentation.
+
+The lengthy HTML is primarily content. Keep content, behavior, and styles separate; add feature modules when the interactive code grows.
