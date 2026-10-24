@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Household Waste Management System — Web Architecture",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "output": ".archify/architecture-household-waste-management-20261024-184519/household-waste-management.html",
+    "repository": {
+      "url": "https://github.com/UNKNOWN-X0/HouseholdWasteManagementSystem.git",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "6e086547621ee63d5cfd0082c10fe889c6a84ad6"
+    }
+  },
+  "components": [
+    {
+      "id": "resident",
+      "type": "external",
+      "label": "Household resident",
+      "sublabel": "Site visitor",
+      "pos": [
+        40,
+        315
+      ],
+      "size": [
+        130,
+        64
+      ],
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 8,
+          "end_line": 10
+        }
+      ]
+    },
+    {
+      "id": "pages",
+      "type": "cloud",
+      "label": "GitHub Pages",
+      "sublabel": "Published site URL",
+      "pos": [
+        290,
+        315
+      ],
+      "size": [
+        150,
+        68
+      ],
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 6,
+          "end_line": 10
+        }
+      ]
+    },
+    {
+      "id": "site",
+      "type": "frontend",
+      "label": "Static website",
+      "sublabel": "index.html · app.js · style.css",
+      "pos": [
+        580,
+        315
+      ],
+      "size": [
+        180,
+        86
+      ],
+      "sources": [
+        {
+          "path": "index.html",
+          "line": 17,
+          "end_line": 45
+        },
+        {
+          "path": "app.js",
+          "line": 10,
+          "end_line": 35
+        },
+        {
+          "path": "style.css",
+          "line": 1,
+          "end_line": 34
+        }
+      ]
+    },
+    {
+      "id": "local-state",
+      "type": "database",
+      "label": "Browser localStorage",
+      "sublabel": "Checklist state",
+      "pos": [
+        595,
+        90
+      ],
+      "size": [
+        150,
+        68
+      ],
+      "sources": [
+        {
+          "path": "app.js",
+          "line": 53,
+          "end_line": 66
+        }
+      ]
+    },
+    {
+      "id": "fonts",
+      "type": "external",
+      "label": "Google Fonts",
+      "sublabel": "Sarabun · IBM Plex Mono",
+      "pos": [
+        1000,
+        315
+      ],
+      "size": [
+        155,
+        68
+      ],
+      "sources": [
+        {
+          "path": "index.html",
+          "line": 7,
+          "end_line": 13
+        }
+      ]
+    },
+    {
+      "id": "repository",
+      "type": "cloud",
+      "label": "GitHub repository",
+      "sublabel": "HTML · CSS · JavaScript",
+      "pos": [
+        580,
+        560
+      ],
+      "size": [
+        180,
+        70
+      ],
+      "sources": [
+        {
+          "path": "README.md",
+          "line": 64,
+          "end_line": 72
+        }
+      ]
+    },
+    {
+      "id": "ci-build",
+      "type": "cloud",
+      "label": "GitHub Actions build",
+      "sublabel": "Jekyll builder in Docker",
+      "pos": [
+        900,
+        560
+      ],
+      "size": [
+        190,
+        70
+      ],
+      "sources": [
+        {
+          "path": ".github/workflows/jekyll-docker.yml",
+          "line": 3,
+          "end_line": 19
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Visitor browser",
+      "wraps": [
+        "site",
+        "local-state"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "visit",
+      "from": "resident",
+      "to": "pages",
+      "label": "opens live URL",
+      "variant": "emphasis"
+    },
+    {
+      "id": "serve",
+      "from": "pages",
+      "to": "site",
+      "label": "serves static page",
+      "variant": "emphasis"
+    },
+    {
+      "id": "checklist",
+      "from": "site",
+      "to": "local-state",
+      "label": "reads / saves checklist"
+    },
+    {
+      "id": "typefaces",
+      "from": "site",
+      "to": "fonts",
+      "label": "requests hosted fonts"
+    },
+    {
+      "id": "source",
+      "from": "repository",
+      "to": "site",
+      "label": "contains source",
+      "variant": "dashed"
+    },
+    {
+      "id": "ci",
+      "from": "repository",
+      "to": "ci-build",
+      "label": "push / PR on main",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Visitor experience",
+      "items": [
+        "The page presents five waste streams through seven navigation tabs. (index.html:21–27, 42–50, 157–160)",
+        "The client script controls tab navigation, mobile navigation, reveal effects, and roadmap progress. (app.js:6–50, 68–99, 145–177)"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Checklist storage",
+      "items": [
+        "Roadmap checkbox state is restored from and written to localStorage in the visitor's browser. (app.js:53–65)",
+        "The repository contains no shared checklist API; localStorage is the only progress persistence shown. (README.md:52–58, 64–72; app.js:53–65)"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Build and publishing boundary",
+      "items": [
+        "The README links to the live GitHub Pages site. (README.md:6–10)",
+        "The workflow builds with Jekyll on pushes and pull requests to main; it defines no Pages deployment step. (README.md:64–72; .github/workflows/jekyll-docker.yml:1–19)"
+      ]
+    }
+  ]
+}
