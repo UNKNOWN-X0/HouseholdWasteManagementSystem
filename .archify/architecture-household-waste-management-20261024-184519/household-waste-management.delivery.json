@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "receiptId": "93171507-bbdd-40b5-b4f2-c4bf631d91e9",
+  "receiptId": "ecf75dfb-7cc1-4fb7-a8e1-8ae43c7b3b0f",
   "status": "current",
   "command": "deliver",
   "type": "architecture",
   "input": "/Users/thanate/Developer/Personal/HouseholdWasteManagementSystem/.archify/architecture-household-waste-management-20261024-184519/candidate.json",
   "output": "/Users/thanate/Developer/Personal/HouseholdWasteManagementSystem/.archify/architecture-household-waste-management-20261024-184519/household-waste-management.html",
   "specification": {
-    "sha256": "86c5616f52989eeda3936660bb48e31a54773bdc61bcdda49008ee5689e5eecd",
-    "bytes": 5435
+    "sha256": "3f8dfb7890565c9741f4ef749eceaa5d67aaa32fef75371699f1cf8d38a5fb83",
+    "bytes": 8187
   },
   "artifact": {
-    "sha256": "529133fe0eb121f45c9e46b4bad4884ec6f107fa730e2758ecacaec43a9b101a",
-    "bytes": 822180
+    "sha256": "7e8ece09acafdcfbea9828d7c7dff6d55fcdf91bd7013ca9c01b86c03a6e2d54",
+    "bytes": 827803
   }
 }

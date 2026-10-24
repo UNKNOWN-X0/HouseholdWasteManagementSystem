@@ -2,7 +2,7 @@
   "schema_version": 1,
   "diagram_type": "architecture",
   "meta": {
-    "title": "Household Waste Management System — Web Architecture",
+    "title": "Household Waste Management System",
     "locale": "en",
     "quality_profile": "showcase",
     "output": ".archify/architecture-household-waste-management-20261024-184519/household-waste-management.html",
@@ -10,7 +10,7 @@
       "url": "https://github.com/UNKNOWN-X0/HouseholdWasteManagementSystem.git",
       "provider": "github",
       "link_mode": "web",
-      "revision": "6e086547621ee63d5cfd0082c10fe889c6a84ad6"
+      "revision": "ac922052ebb21ad849ae3807e9c84cbc804d7b8e"
     }
   },
   "components": [
@@ -18,14 +18,14 @@
       "id": "resident",
       "type": "external",
       "label": "Household resident",
-      "sublabel": "Site visitor",
+      "sublabel": "Visitor",
       "pos": [
         40,
-        315
+        300
       ],
       "size": [
-        130,
-        64
+        140,
+        68
       ],
       "sources": [
         {
@@ -41,11 +41,11 @@
       "label": "GitHub Pages",
       "sublabel": "Published site URL",
       "pos": [
-        290,
-        315
+        270,
+        300
       ],
       "size": [
-        150,
+        155,
         68
       ],
       "sources": [
@@ -59,31 +59,62 @@
     {
       "id": "site",
       "type": "frontend",
-      "label": "Static website",
-      "sublabel": "index.html · app.js · style.css",
+      "label": "Seven-panel guide",
+      "sublabel": "index.html · content and style.css",
       "pos": [
-        580,
-        315
+        535,
+        300
       ],
       "size": [
-        180,
-        86
+        190,
+        84
       ],
       "sources": [
         {
           "path": "index.html",
-          "line": 17,
-          "end_line": 45
+          "line": 1,
+          "end_line": 32
         },
         {
-          "path": "app.js",
-          "line": 10,
-          "end_line": 35
+          "path": "index.html",
+          "line": 37,
+          "end_line": 995
         },
         {
           "path": "style.css",
           "line": 1,
-          "end_line": 34
+          "end_line": 1203
+        }
+      ]
+    },
+    {
+      "id": "interactions",
+      "type": "frontend",
+      "label": "Client interactions",
+      "sublabel": "app.js · navigation and checklist",
+      "pos": [
+        815,
+        300
+      ],
+      "size": [
+        205,
+        84
+      ],
+      "sources": [
+        {
+          "path": "app.js",
+          "line": 6,
+          "end_line": 51
+        },
+        {
+          "path": "app.js",
+          "line": 53,
+          "end_line": 142
+        },
+        {
+          "path": "app.js",
+          "line": 145,
+          "end_line": 181
         }
       ]
     },
@@ -91,14 +122,14 @@
       "id": "local-state",
       "type": "database",
       "label": "Browser localStorage",
-      "sublabel": "Checklist state",
+      "sublabel": "Onboarding checkbox state",
       "pos": [
-        595,
+        820,
         90
       ],
       "size": [
-        150,
-        68
+        180,
+        72
       ],
       "sources": [
         {
@@ -114,11 +145,11 @@
       "label": "Google Fonts",
       "sublabel": "Sarabun · IBM Plex Mono",
       "pos": [
-        1000,
-        315
+        1135,
+        300
       ],
       "size": [
-        155,
+        165,
         68
       ],
       "sources": [
@@ -133,14 +164,14 @@
       "id": "repository",
       "type": "cloud",
       "label": "GitHub repository",
-      "sublabel": "HTML · CSS · JavaScript",
+      "sublabel": "HTML · CSS · JavaScript source",
       "pos": [
-        580,
+        535,
         560
       ],
       "size": [
-        180,
-        70
+        190,
+        72
       ],
       "sources": [
         {
@@ -153,20 +184,20 @@
     {
       "id": "ci-build",
       "type": "cloud",
-      "label": "GitHub Actions build",
-      "sublabel": "Jekyll builder in Docker",
+      "label": "GitHub Actions CI",
+      "sublabel": "Docker Jekyll build → _site",
       "pos": [
-        900,
+        835,
         560
       ],
       "size": [
-        190,
-        70
+        215,
+        72
       ],
       "sources": [
         {
           "path": ".github/workflows/jekyll-docker.yml",
-          "line": 3,
+          "line": 1,
           "end_line": 19
         }
       ]
@@ -178,6 +209,7 @@
       "label": "Visitor browser",
       "wraps": [
         "site",
+        "interactions",
         "local-state"
       ]
     }
@@ -198,10 +230,16 @@
       "variant": "emphasis"
     },
     {
-      "id": "checklist",
+      "id": "load-script",
       "from": "site",
+      "to": "interactions",
+      "label": "loads app.js"
+    },
+    {
+      "id": "checklist-state",
+      "from": "interactions",
       "to": "local-state",
-      "label": "reads / saves checklist"
+      "label": "reads / saves check_i"
     },
     {
       "id": "typefaces",
@@ -213,40 +251,64 @@
       "id": "source",
       "from": "repository",
       "to": "site",
-      "label": "contains source",
+      "label": "contains site source",
       "variant": "dashed"
     },
     {
       "id": "ci",
       "from": "repository",
       "to": "ci-build",
-      "label": "push / PR on main",
+      "label": "push / PR to main",
       "variant": "dashed"
     }
   ],
   "cards": [
     {
       "dot": "emerald",
-      "title": "Visitor experience",
+      "title": "Visitor flow and navigation",
       "items": [
-        "The page presents five waste streams through seven navigation tabs. (index.html:21–27, 42–50, 157–160)",
-        "The client script controls tab navigation, mobile navigation, reveal effects, and roadmap progress. (app.js:6–50, 68–99, 145–177)"
+        "The page has seven section tabs, and app.js changes the active panel without leaving the page. The initial view is Overview. (index.html:17–32, 37–37; app.js:6–32, 180–181)",
+        "The script also handles the mobile menu, left/right panel keys, and scroll-to-top behavior. At small widths, stream details collapse until tapped; IntersectionObserver reveals content cards as they enter view. (app.js:35–51, 68–99, 101–142; style.css:1060–1129, 1145–1173)"
       ]
     },
     {
       "dot": "cyan",
-      "title": "Checklist storage",
+      "title": "Sorting model and destinations",
       "items": [
-        "Roadmap checkbox state is restored from and written to localStorage in the visitor's browser. (app.js:53–65)",
-        "The repository contains no shared checklist API; localStorage is the only progress persistence shown. (README.md:52–58, 64–72; app.js:53–65)"
+        "Five color-coded streams adapt Germany’s four-stream model to Thai collection, recycling, and climate conditions; only blue residual waste goes to the municipal truck. (README.md:8–38; index.html:37–149, 155–330)",
+        "The Outbound section explains separate routes for paper, recyclables, organics, residuals, and hazardous waste, including saleng, waste-bank, app, and drop-off options. (index.html:488–619)"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Organic processing",
+      "items": [
+        "Bokashi is the recommended home process for Thai kitchens: sealed fermentation, periodic liquid draining, a two-week finish, then burial in soil or a pot. (index.html:356–407)",
+        "The page compares Bokashi with composting and worm farming, and lists alternatives for homes that cannot compost on site. (index.html:410–486)"
       ]
     },
     {
       "dot": "amber",
-      "title": "Build and publishing boundary",
+      "title": "Rules, onboarding, and browser state",
       "items": [
-        "The README links to the live GitHub Pages site. (README.md:6–10)",
-        "The workflow builds with Jekyll on pushes and pull requests to main; it defines no Pages deployment step. (README.md:64–72; .github/workflows/jekyll-docker.yml:1–19)"
+        "Fines, rewards, and the onboarding checklist are in the Rules panel. The saved checkboxes are onboarding steps, not the four-week roadmap. (index.html:620–755)",
+        "Each checkbox is stored as a true/false value under an indexed check_i key in localStorage. A progress bar counts completion and is inserted above that checklist; this state is local to the visitor’s browser. (app.js:53–66, 145–177)"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Household rollout and printables",
+      "items": [
+        "The four-week plan covers setup, soft launch, enforcement, and review, followed by weekly/monthly maintenance and pest guidance. (index.html:756–859; README.md:20–24)",
+        "The printable poster has bilingual Thai/English sorting labels for five streams; three bag tags tell collectors how organic, recyclable, and residual bags are sorted. (index.html:864–984)"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Fonts, hosting, and CI",
+      "items": [
+        "The HTML loads the local stylesheet and Google Fonts (Sarabun and IBM Plex Mono). (index.html:7–13; README.md:44–50)",
+        "The README links to the live GitHub Pages site. GitHub Actions runs a Docker Jekyll build on pushes and pull requests to main; the workflow builds _site but contains no deployment or artifact-upload step. (README.md:6–10; .github/workflows/jekyll-docker.yml:1–19)"
       ]
     }
   ]

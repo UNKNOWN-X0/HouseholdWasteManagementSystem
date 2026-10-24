@@ -1,7 +1,10 @@
 {
-  "0": "Page Interaction and Checklist",
-  "1": "GitHub Pages Workflow",
-  "2": "Implementation and Materials",
-  "3": "Deployment Steps",
-  "4": "Waste Sorting System"
+  "0": "Household Rules and Rollout",
+  "1": "Site Content and Assets",
+  "2": "GitHub Actions Triggers",
+  "3": "Jekyll Build Steps",
+  "4": "Project Instructions",
+  "5": "Archify Diagram Guidance",
+  "6": "Graphify Index Guidance",
+  "7": "Client Interactions and Browser Storage"
 }

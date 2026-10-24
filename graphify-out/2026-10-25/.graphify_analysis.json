@@ -1,0 +1,211 @@
+{
+  "communities": {
+    "0": [
+      "app",
+      "app_observerevealtargets",
+      "app_showpanel",
+      "app_updateprogress",
+      "browser_localstorage_checklist_state",
+      "external_github_pages",
+      "index_html_compliance_checklist_and_rewards",
+      "index_html_four_week_implementation_roadmap",
+      "readme_four_week_rollout",
+      "readme_household_compliance_and_rewards",
+      "readme_household_waste_management_system"
+    ],
+    "1": [
+      "index_html_bokashi_composting_guide",
+      "index_html_germany_thailand_stream_mapping",
+      "readme_bokashi_processing",
+      "readme_thailand_adaptations"
+    ],
+    "2": [
+      "github_workflows_jekyll_docker",
+      "github_workflows_jekyll_docker_jobs",
+      "github_workflows_jekyll_docker_name",
+      "github_workflows_jekyll_docker_pull_request_branches",
+      "github_workflows_jekyll_docker_push_branches",
+      "github_workflows_jekyll_docker_true",
+      "github_workflows_jekyll_docker_true_pull_request",
+      "github_workflows_jekyll_docker_true_push"
+    ],
+    "3": [
+      "github_workflows_jekyll_docker_build_runs_on",
+      "github_workflows_jekyll_docker_build_steps",
+      "github_workflows_jekyll_docker_jobs_build",
+      "github_workflows_jekyll_docker_steps_name",
+      "github_workflows_jekyll_docker_steps_run",
+      "github_workflows_jekyll_docker_steps_uses"
+    ],
+    "4": [
+      "agents",
+      "agents_project_agents_standard",
+      "agents_project_data",
+      "agents_project_instructions",
+      "agents_workspace_addons_inventory"
+    ],
+    "5": [
+      "agents_archify_diagrams",
+      "agents_workspace_archify_guidance"
+    ],
+    "6": [
+      "agents_graphify_persistent_index",
+      "agents_workspace_graphify_guidance"
+    ],
+    "7": [
+      "external_google_fonts",
+      "index_html_five_color_coded_waste_streams",
+      "index_html_home_waste_management_page",
+      "index_html_printable_thai_labels",
+      "readme_bilingual_sorting_labels"
+    ],
+    "8": [
+      "index_html_separate_outbound_waste_routes",
+      "readme_five_stream_sorting_plan",
+      "readme_keep_valuable_streams_out_of_municipal_truck",
+      "readme_saleng_recycling_routes"
+    ]
+  },
+  "cohesion": {
+    "0": 0.21818181818181817,
+    "1": 0.5,
+    "2": 0.25,
+    "3": 0.3333333333333333,
+    "4": 0.4,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 0.4,
+    "8": 0.6666666666666666
+  },
+  "gods": [
+    {
+      "id": "index_html_home_waste_management_page",
+      "label": "Home waste management presentation page",
+      "degree": 9
+    },
+    {
+      "id": "readme_household_waste_management_system",
+      "label": "Household Waste Management System README",
+      "degree": 7
+    },
+    {
+      "id": "readme_five_stream_sorting_plan",
+      "label": "Five-stream household sorting plan",
+      "degree": 5
+    },
+    {
+      "id": "github_workflows_jekyll_docker_build_steps",
+      "label": "steps",
+      "degree": 4
+    },
+    {
+      "id": "agents_project_instructions",
+      "label": "Project instructions",
+      "degree": 4
+    },
+    {
+      "id": "app_updateprogress",
+      "label": "updateProgress()",
+      "degree": 3
+    },
+    {
+      "id": "github_workflows_jekyll_docker_jobs_build",
+      "label": "build",
+      "degree": 3
+    },
+    {
+      "id": "index_html_compliance_checklist_and_rewards",
+      "label": "Household compliance checklist, fines, and rewards",
+      "degree": 3
+    },
+    {
+      "id": "readme_thailand_adaptations",
+      "label": "Adapt German waste streams to Thai infrastructure and climate",
+      "degree": 3
+    },
+    {
+      "id": "index_html_separate_outbound_waste_routes",
+      "label": "Separate outbound routes for recyclables, organics, residual, and hazardous waste",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Home waste management presentation page",
+      "target": "showPanel()",
+      "source_files": [
+        "index.html",
+        "app.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "implements",
+      "why": "crosses file types (code ↔ doc); bridges separate communities; peripheral node `showPanel()` unexpectedly reaches hub `Home waste management presentation page`"
+    },
+    {
+      "source": "Household compliance checklist, fines, and rewards",
+      "target": "updateProgress()",
+      "source_files": [
+        "index.html",
+        "app.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "implements",
+      "why": "crosses file types (code ↔ doc)"
+    },
+    {
+      "source": "Household Waste Management System README",
+      "target": "updateProgress()",
+      "source_files": [
+        "README.md",
+        "app.js"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (code ↔ doc)"
+    },
+    {
+      "source": "Five color-coded waste streams and accepted items",
+      "target": "Five-stream household sorting plan",
+      "source_files": [
+        "index.html",
+        "README.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "implements",
+      "why": "bridges separate communities; peripheral node `Five color-coded waste streams and accepted items` unexpectedly reaches hub `Five-stream household sorting plan`"
+    },
+    {
+      "source": "Household compliance checklist, fines, and rewards",
+      "target": "Household sorting penalties and rewards",
+      "source_files": [
+        "index.html",
+        "README.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "implements",
+      "why": "inferred connection - not explicitly stated in source"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `Home waste management presentation page` connect `Home waste management presentation page` to `Page Interaction and Checklist`, `Adapt German waste streams to Thai infrastructure and climate`, `Five-stream household sorting plan`?",
+      "why": "High betweenness centrality (0.107) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `Project AGENTS Standard`, `Workspace Add-on Inventory`, `Archify Diagrams` to the rest of the system?",
+      "why": "9 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Household Waste Management System README` connect `Page Interaction and Checklist` to `Five-stream household sorting plan`, `Home waste management presentation page`?",
+      "why": "High betweenness centrality (0.080) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `Five-stream household sorting plan` connect `Five-stream household sorting plan` to `Page Interaction and Checklist`, `Adapt German waste streams to Thai infrastructure and climate`, `Home waste management presentation page`?",
+      "why": "High betweenness centrality (0.051) - this node is a cross-community bridge."
+    }
+  ]
+}
